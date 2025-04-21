@@ -1,0 +1,314 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+    --bg-col: #f5f5f5;
+    --box-col: #fff;
+    --mov-col1: #8093f1;
+    --mov-col2: #ee6055;
+    --form-col: #fff;
+    --blk-col: #222;
+    --whi-col: #fff;
+    --inp-col: #8f8f8f;
+    --error-col: #ff3333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-col);
+}
+
+
+.box {
+    position: relative;
+    width: 450px;
+    background: var(--box-col);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.05),
+        15px 25px 20px rgba(0, 0, 0, 0.05),
+        15px 20px 20px rgba(0, 0, 0, 0.05),
+        inset -5px -5px 15px rgba(255, 255, 255, 0.9);
+    padding: 2px; 
+}
+
+.box::before,
+.box::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, transparent, transparent, var(--mov-col1), var(--mov-col1));
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    bottom: -30%
+}
+
+.box::after {
+    animation-delay: -3s;
+}
+
+.borderline {
+    position: absolute;
+    top: 0;
+    inset: 0;
+}
+
+.borderline::before,
+.borderline::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, transparent, transparent, var(--mov-col2), var(--mov-col2));
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    bottom: -30%
+}
+
+.borderline::before {
+    animation-delay: -1.5s;
+}
+
+.borderline::after {
+    animation-delay: -4.5s;
+}
+
+@keyframes animate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Form Styles */
+.box form {
+    position: relative;
+    inset: 4px;
+    padding: 30px 40px;
+    border-radius: 8px;
+    background-color: var(--form-col);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.box form h2 {
+    color: var(--blk-col);
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+
+/* Input Box Styles */
+.box form .inputbox {
+    position: relative;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.box form .inputbox input,
+.box form .inputbox select {
+    width: 100%;
+    padding: 15px 10px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: var(--blk-col);
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.box form .inputbox select {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.box form .inputbox span {
+    position: absolute;
+    left: 0;
+    padding: 15px 0 10px;
+    pointer-events: none;
+    color: var(--inp-col);
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.3s;
+}
+
+.box form .inputbox input:valid ~ span,
+.box form .inputbox input:focus ~ span,
+.box form .inputbox select:valid ~ span,
+.box form .inputbox select:focus ~ span {
+    color: var(--mov-col1);
+    font-size: 0.75em;
+    transform: translateY(-34px);
+}
+
+.box form .inputbox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--mov-col1);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.box form .inputbox input:valid ~ i,
+.box form .inputbox input:focus ~ i,
+.box form .inputbox select:valid ~ i,
+.box form .inputbox select:focus ~ i {
+    height: 2px;
+    background: var(--mov-col2);
+}
+
+
+.box form .links {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.box form .links a {
+    font-size: 0.85em;
+    color: var(--inp-col);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.box form .links a:hover {
+    color: var(--mov-col1);
+    text-decoration: underline;
+}
+
+
+.box form input[type="submit"] {
+    border: none;
+    outline: none;
+    padding: 10px 25px;
+    background: var(--mov-col1);
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 25px;
+    font-weight: 600;
+    width: 70%;
+    margin: 20px auto 0;
+    color: var(--whi-col);
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
+}
+
+.box form input[type="submit"]:hover {
+    background: var(--mov-col2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.box form input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+
+.error-message {
+    color: var(--error-col);
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+.login_box {
+    height: 380px;
+}
+
+.login_box form {
+    padding: 30px;
+}
+
+.login_box form .inputbox {
+    margin-top: 20px;
+}
+
+
+@media (max-width: 500px) {
+    .box, .login_box {
+        width: 90%;
+        margin: 20px 0;
+    }
+    
+    .box form {
+        padding: 25px;
+    }
+    
+    .login_box form {
+        padding: 20px;
+    }
+}
+
+.alert {
+    position: relative;
+    padding: 10px 35px 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: inherit;
+}
+
+
+.login_box {
+    height: auto; 
+    min-height: 380px; 
+    padding-bottom: 20px; 
+}
+
+.login_box form {
+    padding: 20px 40px;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1;  }
+}

@@ -1,0 +1,15 @@
+.back-home-btn {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+
+}
+
+.back-home-btn:hover {
+    text-decoration: underline;
+}
